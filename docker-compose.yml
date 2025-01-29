@@ -1,0 +1,26 @@
+services:
+  server:
+    build: ./server
+    container_name: server
+    networks:
+      - mitm_net
+
+  victim:
+    build: ./victim
+    container_name: victim
+    networks:
+      - mitm_net
+
+  attacker:
+    build: ./attacker
+    container_name: attacker
+    cap_add:
+      - NET_ADMIN  # Allows network configuration changes
+    tty: true      # Keeps the container running in interactive mode
+    stdin_open: true  # Keeps stdin open for user input
+    networks:
+      - mitm_net
+
+networks:
+  mitm_net:
+    driver: bridge  # Creates an isolated bridge network for communication
